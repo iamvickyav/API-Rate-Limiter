@@ -38,7 +38,7 @@ public class RedisRepoImpl implements RedisRepo {
             }
         } else {
             logger.info("No entry exist in Redis; Creating new entry for clientId=" + redisKey);
-            hashOperations.put(redisKey, "h", "0");
+            hashOperations.put(redisKey, "h", "1");
             redisTemplate.expire(redisKey, 60, TimeUnit.SECONDS);
         }
     }

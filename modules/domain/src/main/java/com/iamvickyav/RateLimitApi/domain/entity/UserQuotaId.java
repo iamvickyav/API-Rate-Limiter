@@ -1,5 +1,7 @@
 package com.iamvickyav.RateLimitApi.domain.entity;
 
+import com.iamvickyav.RateLimitApi.domain.ApiEnum;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
@@ -22,8 +24,10 @@ public class UserQuotaId implements Serializable {
         this.apiId = apiId;
     }
 
-    public UserQuotaId(String userId, String apiId) {
+    public UserQuotaId(String userId, String apiName) {
         this.userId = Integer.valueOf(userId);
-        this.apiId = Integer.valueOf(apiId);
+        this.apiId =  ApiEnum.getApiCodeByName(apiName);
     }
+
+
 }

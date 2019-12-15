@@ -11,8 +11,11 @@ public class User {
 
     @Id
     @Column(name = "user_id")
-    Integer userId;
+    String userId;
 
     @Column(name = "user_email")
     String userEmail;
+
+    @Column(name = "user_enc_password")
+    String userPassword;
 }
