@@ -1,6 +1,5 @@
 package com.iamvickyav.RateLimitApi.app;
 
-import com.iamvickyav.RateLimitApi.app.interceptor.RateLimitInterceptor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,7 @@ public class WorldInfoController {
     private static final Logger logger = LogManager.getLogger(WorldInfoController.class);
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    Map testing(){
+    Map getCountriesList(){
         logger.info("Hello From Controller");
         Map<String, String> map = new HashMap();
         map.put("message", "test successful");

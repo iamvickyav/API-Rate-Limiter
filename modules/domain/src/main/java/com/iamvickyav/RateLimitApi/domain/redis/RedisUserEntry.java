@@ -1,4 +1,4 @@
-package com.iamvickyav.RateLimitApi.domain;
+package com.iamvickyav.RateLimitApi.domain.redis;
 
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;

@@ -1,6 +1,6 @@
 package com.iamvickyav.RateLimitApi.app.interceptor;
 
-import com.iamvickyav.RateLimitApi.domain.InvalidUserException;
+import com.iamvickyav.RateLimitApi.domain.exception.InvalidUserException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
@@ -29,7 +29,7 @@ public class UserAuthenticationInterceptor implements HandlerInterceptor {
              logger.info("Valid User; clientId=" + clientId);
          } else {
              logger.info("Invalid User; clientId=" + clientId);
-             throw new InvalidUserException("Not a valid User");
+             throw new InvalidUserException("cliendId or ClientSecret is not valid");
          }
     }
 }

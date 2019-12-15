@@ -1,4 +1,4 @@
-package com.iamvickyav.RateLimitApi.domain;
+package com.iamvickyav.RateLimitApi.domain.exception;
 
 public class LimitExceededException extends RuntimeException {
 

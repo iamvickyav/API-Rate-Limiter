@@ -1,6 +1,6 @@
 package com.iamvicky.RateLimitApi.redis.config;
 
-import com.iamvickyav.RateLimitApi.domain.RedisUserEntry;
+import com.iamvickyav.RateLimitApi.domain.redis.RedisUserEntry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;

@@ -1,7 +1,7 @@
 package com.iamvicky.RateLimitApi.redis.repo;
 
-import com.iamvickyav.RateLimitApi.domain.LimitExceededException;
-import com.iamvickyav.RateLimitApi.domain.RedisUserEntry;
+import com.iamvickyav.RateLimitApi.domain.exception.LimitExceededException;
+import com.iamvickyav.RateLimitApi.domain.redis.RedisUserEntry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.data.redis.core.HashOperations;
@@ -25,42 +25,21 @@ public class RedisRepoImpl implements RedisRepo {
     }
 
     @Override
-    public void checkLimit(String id) {
-        String counter = hashOperations.get(id, "h");
+    public void checkLimit(String redisKey, Integer maxLimit) {
+        String counter = hashOperations.get(redisKey, "h");
         if (counter != null) {
             int visitCount = Integer.parseInt(counter);
-            if (visitCount < 10) {
-                logger.info("RateLimit not exceeded for clientId=" + id);
-                hashOperations.increment(id, "h", 1L);
+            if (visitCount < maxLimit) {
+                logger.info("RateLimit not exceeded for clientId=" + redisKey);
+                hashOperations.increment(redisKey, "h", 1L);
             } else {
-                logger.info("RateLimit exceeded for clientId=" + id);
-                throw new LimitExceededException("RateLimit exceeded for clientId=" + id);
+                logger.info("RateLimit exceeded for clientId=" + redisKey);
+                throw new LimitExceededException("RateLimit exceeded for clientId=" + redisKey);
             }
         } else {
-            logger.info("No entry exist in Redis; Creating new entry for clientId=" + id);
-            hashOperations.put(id, "h", "0");
-            redisTemplate.expire(id, 60, TimeUnit.SECONDS);
+            logger.info("No entry exist in Redis; Creating new entry for clientId=" + redisKey);
+            hashOperations.put(redisKey, "h", "0");
+            redisTemplate.expire(redisKey, 60, TimeUnit.SECONDS);
         }
     }
-
-    /*@Override
-    public void checkLimit(String id) {
-        RedisUserEntry redisUserEntry = valueOperations.get(id);
-        if(redisUserEntry != null) {
-            boolean result = incrementVisitCount(redisUserEntry);
-            if(result) {
-                logger.info("RateLimit not exceeded for clientId=" + id);
-               valueOperations.set(id, redisUserEntry);
-
-                //redisKVTemplate.update(partialUpdate);
-            }
-            else {
-                logger.info("RateLimit exceeded for clientId="+id);
-                throw new LimitExceededException("RateLimit exceeded for clientId="+id);
-            }
-        } else {
-            logger.info("No entry exist in Redis; Creating new entry for clientId="+id);
-            valueOperations.set(id, new RedisUserEntry(id), 60, TimeUnit.SECONDS);
-        }*/
-
 }
