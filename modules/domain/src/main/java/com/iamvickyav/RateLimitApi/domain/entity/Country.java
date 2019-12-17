@@ -9,11 +9,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "country")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Country {
+public class Country implements Serializable {
 
     @Id
     @Column(name = "country_id")

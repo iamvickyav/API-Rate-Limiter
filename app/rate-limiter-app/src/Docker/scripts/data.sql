@@ -1,13 +1,16 @@
-insert into user values (1, 'vickyavw.10@gmail.com');
+use MY_DB;
 
-insert into api values (1, 'getCountriesList', 10);
-insert into api values (2, 'getCountryByCode', 5);
+insert into signup_invitation values (1, 'keerthu@gmail.com', 'SUMMEROFFER');
+
+insert into user values (1, 'vicky', 'vickyavw.10@gmail.com', 'smRGLv5svAXvMiz6m+PFhfqGY4BU+RmziklDk4O7uU8zXUt+9euFVsH0Tv1NxYhO');
+
+insert into api values (1, 'getCountriesList', 10, 0);
+insert into api values (2, 'getCountryByCode', 5, 0);
 
 insert into user_api_quota values (1, 1, 10);
 insert into user_api_quota values (1, 2, 10);
 
 -- Countries of the world
-
 insert into country (country_name, country_code, UN_member, UN_member_since) values ('Albania','AL','Y',1955);
 insert into country (country_name, country_code, UN_member, UN_member_since) values ('Afghanistan','AF','Y',1946);
 insert into country (country_name, country_code, UN_member, UN_member_since) values ('Algeria','DZ','Y',1962);

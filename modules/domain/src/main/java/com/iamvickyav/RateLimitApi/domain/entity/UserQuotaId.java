@@ -1,6 +1,6 @@
 package com.iamvickyav.RateLimitApi.domain.entity;
 
-import com.iamvickyav.RateLimitApi.domain.ApiEnum;
+import com.iamvickyav.RateLimitApi.domain.enums.ApiEnum;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -11,7 +11,7 @@ import java.util.Objects;
 public class UserQuotaId implements Serializable {
 
     @Column(name = "user_id")
-    public String userId;
+    public Integer userId;
 
     @Column(name = "api_id")
     public Integer apiId;
@@ -19,12 +19,12 @@ public class UserQuotaId implements Serializable {
     public UserQuotaId(){
     }
 
-    public UserQuotaId(String userId, Integer apiId) {
+    public UserQuotaId(Integer userId, Integer apiId) {
         this.userId = userId;
         this.apiId = apiId;
     }
 
-    public UserQuotaId(String userId, String apiName) {
+    public UserQuotaId(Integer userId, String apiName) {
         this.userId = userId;
         this.apiId =  ApiEnum.getApiCodeByName(apiName);
     }

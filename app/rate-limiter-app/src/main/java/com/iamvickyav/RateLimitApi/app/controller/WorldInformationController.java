@@ -1,6 +1,6 @@
 package com.iamvickyav.RateLimitApi.app.controller;
 
-import com.iamvickyav.RateLimitApi.data.repo.CountryDetailsRepo;
+import com.iamvickyav.RateLimitApi.app.service.WorldInfoService;
 import com.iamvickyav.RateLimitApi.domain.entity.Country;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,22 +17,19 @@ public class WorldInformationController {
     private static final Logger logger = LogManager.getLogger(WorldInformationController.class);
 
     @Autowired
-    CountryDetailsRepo countryDetailsRepo;
+    WorldInfoService infoService;
 
     @RequestMapping(value = "/countries", method = RequestMethod.GET)
     List<Country> getCountriesList(@RequestParam(required = false) Boolean memberOfUN) {
-        List<Country> countryList;
-        if(memberOfUN == null)
-            countryList = countryDetailsRepo.findAll();
-        else
-            countryList = countryDetailsRepo.findByIsMemberOfUN(memberOfUN);
-        return countryList;
+        logger.info("Call for getCountriesList");
+        return infoService.getAllCountryInformation(memberOfUN);
     }
 
     @RequestMapping(value = "/country/{code}", method = RequestMethod.GET)
     ResponseEntity<Country> getCountryByCode(@PathVariable("code") String countryCode) {
-        Country country = countryDetailsRepo.findByCountryCode(countryCode);
+        logger.info("Call for getCountryByCode");
         ResponseEntity<Country> response;
+        Country country = infoService.getCountryByCode(countryCode);
         if(country != null)
             response =  new ResponseEntity<>(country, HttpStatus.OK);
         else

@@ -10,8 +10,24 @@ import javax.persistence.Table;
 public class UserApiQuota {
 
     @EmbeddedId
-    public UserQuotaId id;
+    private UserQuotaId id;
 
     @Column(name = "quota_assigned")
-    public Integer quotaAssigned;
+    private Integer quotaAssigned;
+
+    public UserQuotaId getId() {
+        return id;
+    }
+
+    public void setId(UserQuotaId id) {
+        this.id = id;
+    }
+
+    public Integer getQuotaAssigned() {
+        return quotaAssigned;
+    }
+
+    public void setQuotaAssigned(Integer quotaAssigned) {
+        this.quotaAssigned = quotaAssigned;
+    }
 }

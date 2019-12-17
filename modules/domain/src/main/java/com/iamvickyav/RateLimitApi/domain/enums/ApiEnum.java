@@ -1,4 +1,4 @@
-package com.iamvickyav.RateLimitApi.domain;
+package com.iamvickyav.RateLimitApi.domain.enums;
 
 public enum ApiEnum {
     ALL_COUNTRY_LIST("getCountriesList", 1),
