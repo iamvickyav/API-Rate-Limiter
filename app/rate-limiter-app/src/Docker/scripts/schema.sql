@@ -35,5 +35,5 @@ create table country (
 create table signup_invitation (
 	invite_id int PRIMARY KEY AUTO_INCREMENT,
 	user_email varchar(100) NOT NULL UNIQUE,
-    invitation_code varchar(15) NOT NULL UNIQUE
+    invitation_code varchar(10) NOT NULL
 );

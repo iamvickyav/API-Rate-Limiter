@@ -1,6 +1,6 @@
 use MY_DB;
 
-insert into signup_invitation values (1, 'keerthu@gmail.com', 'SUMMEROFFER');
+insert into signup_invitation values (1, 'keerthu@gmail.com', 'NEWOFFER');
 
 insert into user values (1, 'vicky', 'vickyavw.10@gmail.com', 'smRGLv5svAXvMiz6m+PFhfqGY4BU+RmziklDk4O7uU8zXUt+9euFVsH0Tv1NxYhO');
 
