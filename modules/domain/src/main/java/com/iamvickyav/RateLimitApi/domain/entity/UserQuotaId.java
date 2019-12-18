@@ -24,11 +24,6 @@ public class UserQuotaId implements Serializable {
         this.apiId = apiId;
     }
 
-    public UserQuotaId(Integer userId, String apiName) {
-        this.userId = userId;
-        this.apiId =  ApiEnum.getApiCodeByName(apiName);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

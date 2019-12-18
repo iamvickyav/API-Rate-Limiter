@@ -1,7 +1,6 @@
 package com.iamvicky.RateLimitApi.redis.repo;
 
 import com.iamvickyav.RateLimitApi.domain.exception.LimitExceededException;
-import com.iamvickyav.RateLimitApi.domain.redis.RedisUserEntry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.data.redis.core.HashOperations;
@@ -13,11 +12,11 @@ public class RedisRepoImpl implements RedisRepo {
 
     private static final Logger logger = LogManager.getLogger(RedisRepoImpl.class);
 
-    RedisTemplate<String, RedisUserEntry> redisTemplate;
+    RedisTemplate<String, String> redisTemplate;
 
     HashOperations<String, String, String> hashOperations;
 
-    RedisRepoImpl(RedisTemplate<String, RedisUserEntry> redisTemplate) {
+    RedisRepoImpl(RedisTemplate<String, String> redisTemplate) {
         this.redisTemplate = redisTemplate;
         this.hashOperations = redisTemplate.opsForHash();
     }

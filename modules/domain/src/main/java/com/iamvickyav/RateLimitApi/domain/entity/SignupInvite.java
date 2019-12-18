@@ -1,15 +1,13 @@
 package com.iamvickyav.RateLimitApi.domain.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "signup_invitation")
 public class SignupInvite {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "invite_id")
     private Integer inviteId;
 
@@ -18,6 +16,14 @@ public class SignupInvite {
 
     @Column(name = "invitation_code")
     private String invitationCode;
+
+    SignupInvite() {
+    }
+
+    public SignupInvite(String userEmail, String invitationCode) {
+        this.userEmail = userEmail;
+        this.invitationCode = invitationCode;
+    }
 
     public Integer getInviteId() {
         return inviteId;

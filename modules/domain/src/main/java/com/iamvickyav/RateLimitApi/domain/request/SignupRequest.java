@@ -1,10 +1,16 @@
 package com.iamvickyav.RateLimitApi.domain.request;
 
+import javax.validation.constraints.NotNull;
+
 public class SignupRequest {
 
+    @NotNull
     private String userName;
+    @NotNull
     private String email;
+    @NotNull
     private String password;
+    @NotNull
     private String invitationCode;
 
     public String getUserName() {

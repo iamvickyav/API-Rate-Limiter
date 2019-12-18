@@ -7,12 +7,12 @@
     <parent>
         <groupId>com.iamvickyav</groupId>
         <artifactId>app</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.iamvickyav</groupId>
     <artifactId>rate-limiter-app</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <dependencies>
@@ -37,6 +37,11 @@
             <groupId>com.iamvickyav</groupId>
             <artifactId>redis</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.8</version>
         </dependency>
     </dependencies>
 

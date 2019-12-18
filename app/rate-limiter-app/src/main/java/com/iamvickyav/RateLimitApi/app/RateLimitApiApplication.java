@@ -1,6 +1,7 @@
 package com.iamvickyav.RateLimitApi.app;
 
 import com.iamvicky.RateLimitApi.redis.config.RedisConfig;
+import org.apache.commons.text.RandomStringGenerator;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +15,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+import static org.apache.commons.text.CharacterPredicates.DIGITS;
+import static org.apache.commons.text.CharacterPredicates.LETTERS;
 
 @Import(RedisConfig.class)
 @ComponentScan(basePackages =
@@ -38,5 +42,14 @@ public class RateLimitApiApplication extends SpringBootServletInitializer {
 	@Bean
 	CacheManager concurrentMapCacheManager(){
 		return new ConcurrentMapCacheManager();
+	}
+
+	@Bean
+	RandomStringGenerator randomStringGenerator(){
+		RandomStringGenerator generator = new RandomStringGenerator.Builder()
+				.withinRange('0', 'z')
+				.filteredBy(LETTERS, DIGITS)
+				.build();
+		return generator;
 	}
 }

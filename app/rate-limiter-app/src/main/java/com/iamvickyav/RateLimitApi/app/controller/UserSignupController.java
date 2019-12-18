@@ -7,11 +7,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,9 +21,16 @@ public class UserSignupController {
     @Autowired
     UserSignupService signupService;
 
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    Map processRegistrationRequest(@RequestParam("emailId") String emailId) {
+        signupService.processRegistration(emailId);
+        Map<String, String> map = new HashMap<>();
+        map.put("message" , "Thanks for your interest ! Please check your email for invitation code");
+        return map;
+    }
+
     @RequestMapping(value = "/user/signup", method = RequestMethod.POST)
-    ResponseEntity signupNewUser(@RequestBody SignupRequest request) {
-        // TODO Validator for SignupRequest
+    ResponseEntity signupNewUser(@RequestBody @Valid SignupRequest request) {
         signupService.processSignupRequest(request);
         Map<String, String> map = new HashMap<>();
         map.put("message" , "user created successfully");
