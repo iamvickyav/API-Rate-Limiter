@@ -15,6 +15,15 @@ public class UserApiQuota {
     @Column(name = "quota_assigned")
     private Integer quotaAssigned;
 
+    public UserApiQuota(){
+
+    }
+
+    public UserApiQuota(Integer apiId, Integer userId, Integer quotaAssigned) {
+        this.id = new UserQuotaId(userId, apiId);
+        this.quotaAssigned = quotaAssigned;
+    }
+
     public UserQuotaId getId() {
         return id;
     }
