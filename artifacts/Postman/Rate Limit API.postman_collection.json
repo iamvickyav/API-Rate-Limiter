@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "860b5429-6029-458a-a9b7-d2fe318fdb1d",
+		"name": "Rate Limit API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Register for Invitation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/register?emailId=keerthu@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					],
+					"query": [
+						{
+							"key": "emailId",
+							"value": "keerthu@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\" : \"keerthu\",\n\t\"email\" : \"keerthu@gmail.com\",\n\t\"password\" : \"password123\",\n\t\"invitationCode\" : \"SUMMEROFFER\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/user/signup",
+				"description": "Sign up new user for accessing all endpoints"
+			},
+			"response": []
+		},
+		{
+			"name": "Admin UserQuotaUpdate Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"request\" : {\n\t\t\"1\" : [ {\n\t\t\t\"apiId\" : 1,\n\t\t\t\"newQuota\" : 12\n\t\t},{\n\t\t\t\"apiId\" : 2,\n\t\t\t\"newQuota\" : 12\n\t\t}\n\t\t]\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/user/",
+				"description": "Sign up new user for accessing all endpoints"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Country by Country Code",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CLIENT_ID",
+						"value": "keerthu",
+						"type": "text"
+					},
+					{
+						"key": "CLIENT_SECRET",
+						"value": "password123",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8080/country/IN"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Info about all countries (Without QueryParam)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CLIENT_ID",
+						"value": "vicky",
+						"type": "text"
+					},
+					{
+						"key": "CLIENT_SECRET",
+						"value": "KEERTHU",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8080/countries"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Info about all countries (With QueryParam)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CLIENT_ID",
+						"type": "text",
+						"value": "vicky"
+					},
+					{
+						"key": "CLIENT_SECRET",
+						"type": "text",
+						"value": "KEERTHU"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/countries?memberOfUN=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"countries"
+					],
+					"query": [
+						{
+							"key": "memberOfUN",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Application HealthCheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/healthcheck"
+			},
+			"response": []
+		},
+		{
+			"name": "Application Heartbeat ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/heartbeat"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

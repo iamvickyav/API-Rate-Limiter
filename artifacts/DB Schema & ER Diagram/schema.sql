@@ -4,7 +4,7 @@ use MY_DB;
 create table user (
 	user_id int PRIMARY KEY AUTO_INCREMENT,
     user_name varchar(20) NOT NULL UNIQUE,
-	user_email varchar(100) NOT NULL,
+	user_email varchar(50) NOT NULL,
     user_enc_password varchar(100) NOT NULL
 );
 
