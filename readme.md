@@ -6,17 +6,23 @@ For testing the endpoints, please use the postman collection saved under **artif
 
 ## Starting Redis & MySQL with Docker
 
-```
+```sh
 /RateLimitApi > cd app/rate-limiter-app/src/Docker/
 	
 /Docker > docker-compose up
+```
+
+## To Connect to DB
+
+```sh
+mysql -u root -proot -h 127.0.0.1
 ```
 
 ## Running the Application
 
 ### In a new terminal window, please run the following commands
 
-```
+```sh
 /RateLimitApi > ./mvnw clean install
 
 	(or)	
@@ -31,7 +37,7 @@ The last command will start the spring boot application in embedded Tomcat.
 
 If you want to run it in standalone Tomcat, please run the following commands
 
-```
+```sh
 /RateLimitApi > ./mvnw clean package
 
 /RateLimitApi > cd app/rate-limiter-app/target/
@@ -45,7 +51,7 @@ There you can find the **RateLimitApi.war** which is deployable in a standalone 
 
 A successful response to localhost:8080/heartbeat means the application is deployed & running without any issues
 
-```
+```json
 {
     "message": "Application is running"
 }
@@ -54,7 +60,7 @@ A successful response to localhost:8080/heartbeat means the application is deplo
 
 A successful response to localhost:8080/healthcheck means the DB & Redis is up and running
 
-```
+```json
 {
     "Database": "Up and running",
     "Redis": "Up and running"
